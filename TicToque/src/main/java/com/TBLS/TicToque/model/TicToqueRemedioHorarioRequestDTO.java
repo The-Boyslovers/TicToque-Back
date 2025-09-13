@@ -1,3 +1,3 @@
 package com.TBLS.TicToque.model;
 
-public record TicToqueRemedioHorarioRequestDTO(String tipo, int horas, int intervaloHoras) {}
+public record TicToqueRemedioHorarioRequestDTO(Long idRemedio, String tipo, String hora, int intervaloHoras) {}

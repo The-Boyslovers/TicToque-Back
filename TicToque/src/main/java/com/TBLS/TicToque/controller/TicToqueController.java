@@ -20,6 +20,8 @@ public class TicToqueController
     private TicToquePacienteRepository pacienteRepository;
     @Autowired
     private TicToqueRemedioRepository remedioRepository;
+    @Autowired
+    private TicToqueRemedioHorarioRepository remedioHorarioRepository;
 
     @PostMapping("/mD")
     public void saveMedico(@RequestBody TicToqueMedicoRequestDTO data)
@@ -64,5 +66,20 @@ public class TicToqueController
     {
         List<TicToqueRemedioResponseDTO> remedioList = remedioRepository.findAll().stream().map(TicToqueRemedioResponseDTO::new).toList();
         return remedioList;
+    }
+
+    @PostMapping("/rhD")
+    public void saveRemedioHorario(@RequestBody TicToqueRemedioHorarioRequestDTO data)
+    {
+        TicToqueRemedioHorario remedioHorarioData = new TicToqueRemedioHorario(data);
+        remedioHorarioRepository.save(remedioHorarioData);
+        return;
+    }
+
+    @GetMapping("/rh")
+    public List<TicToqueRemedioHorarioResponseDTO> getAllRemedioHorario()
+    {
+        List<TicToqueRemedioHorarioResponseDTO> remedioHorarioList = remedioHorarioRepository.findAll().stream().map(TicToqueRemedioHorarioResponseDTO::new).toList();
+        return remedioHorarioList;
     }
 }

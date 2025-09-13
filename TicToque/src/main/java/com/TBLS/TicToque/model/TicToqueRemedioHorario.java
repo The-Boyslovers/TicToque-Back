@@ -3,6 +3,7 @@ package com.TBLS.TicToque.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 @Table(name = "remedio_horario")
 @Entity(name = "remedio_horario")
 @Getter
@@ -11,16 +12,19 @@ import lombok.*;
 @EqualsAndHashCode(of = "id")
 public class TicToqueRemedioHorario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRemedioHorario;
+    private Long idHorario;
 
-    @Setter private long id_remedio;
+    @Setter private Long idRemedio;
     @Setter private String tipo;
-    @Setter private int hora;
+    @Setter private String hora;
     @Setter private int intervaloHoras;
-}
 
-public TicToqueRemedioHorario(TicToqueRemedioHorarioRequestDTO data){
-    this.tipo = data.tipo();
-    this.hora = data.hora();
-    this.intervaloHoras = data.intervaloHoras();
+    public TicToqueRemedioHorario(TicToqueRemedioHorarioRequestDTO data)
+    {
+        this.idRemedio = data.idRemedio();
+        this.tipo = data.tipo();
+        this.hora = data.hora();
+        this.intervaloHoras = data.intervaloHoras();
+    }
+
 }

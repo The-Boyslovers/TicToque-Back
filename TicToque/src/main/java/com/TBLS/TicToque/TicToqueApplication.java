@@ -1,7 +1,5 @@
 package com.TBLS.TicToque;
 
-import com.TBLS.TicToque.controller.TicToqueController;
-import com.TBLS.TicToque.model.TicToqueMedico;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

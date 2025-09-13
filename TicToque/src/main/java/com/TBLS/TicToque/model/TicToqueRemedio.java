@@ -20,8 +20,7 @@ public class TicToqueRemedio
     @Setter private String dose;
     @Setter private String nome;
     @Setter private String doenca;
-    @Setter private String tipo_tratamento;
-    @Setter private String horario;
+    @Setter private String tipo;
     @Setter private LocalDate dataInicio;
     @Setter private LocalDate dataFim;
 
@@ -30,8 +29,7 @@ public class TicToqueRemedio
         this.nome = data.nome();
         this.dose = data.dose();
         this.doenca = data.doenca();
-        this.tipo_tratamento = data.tipo_tratamento();
-        this.horario = data.horario();
+        this.tipo = data.tipo();
         this.dataInicio = data.dataFim();
         this.descricao = data.descricao();
     }
