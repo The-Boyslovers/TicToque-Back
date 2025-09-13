@@ -1,10 +1,21 @@
 package com.TBLS.TicToque.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Getter
+@Table(name = "medico")
+@Entity(name = "medico")
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class TicToqueMedico
 {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMedico;
-    private String nome;
-    private String email;
-    private String senha;
-    private String crm;
+
+    @Setter private String nome;
+    @Setter private String email;
+    @Setter private String senha;
+    @Setter private String crm;
 }
