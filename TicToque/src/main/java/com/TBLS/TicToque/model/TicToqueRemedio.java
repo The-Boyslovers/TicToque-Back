@@ -1,10 +1,7 @@
 package com.TBLS.TicToque.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class TicToqueRemedio
 {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +24,15 @@ public class TicToqueRemedio
     @Setter private String horario;
     @Setter private LocalDate dataInicio;
     @Setter private LocalDate dataFim;
+
+     public TicToqueRemedio(TicToqueRemedioRequestDTO data)
+    {
+        this.nome = data.nome();
+        this.dose = data.dose();
+        this.doenca = data.doenca();
+        this.tipo_tratamento = data.tipo_tratamento();
+        this.horario = data.horario();
+        this.dataInicio = data.dataFim();
+        this.descricao = data.descricao();
+    }
 }

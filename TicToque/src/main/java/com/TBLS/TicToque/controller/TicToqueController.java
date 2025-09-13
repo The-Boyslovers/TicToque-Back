@@ -2,9 +2,7 @@ package com.TBLS.TicToque.controller;
 
 import com.TBLS.TicToque.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,23 +17,48 @@ public class TicToqueController
     @Autowired
     private TicToqueRemedioRepository remedioRepository;
 
-    @GetMapping("/m")
-    public List<TicToqueMedicoDTO> getAllMedico()
+    @PostMapping("/mD")
+    public void saveMedico(@RequestBody TicToqueMedicoRequestDTO data)
     {
-        List<TicToqueMedicoDTO> medicoList = medicoRepository.findAll().stream().map(TicToqueMedicoDTO::new).toList();
+        TicToqueMedico medicoData = new TicToqueMedico(data);
+        medicoRepository.save(medicoData);
+        return;
+    }
+
+    @GetMapping("/m")
+    public List<TicToqueMedicoResponseDTO> getAllMedico()
+    {
+        List<TicToqueMedicoResponseDTO> medicoList = medicoRepository.findAll().stream().map(TicToqueMedicoResponseDTO::new).toList();
         return medicoList;
     }
 
-    @GetMapping("/p")
-    public List<TicToquePaciente> getAllPaciente()
+    @PostMapping("/pD")
+    public void savePaciente(@RequestBody TicToquePacienteRequestDTO data)
     {
-        List<TicToquePaciente> pacienteList = pacienteRepository.findAll();
+        TicToquePaciente pacienteData = new TicToquePaciente(data);
+        pacienteRepository.save(pacienteData);
+        return;
+    }
+
+    @GetMapping("/p")
+    public List<TicToquePacienteResponseDTO> getAllPaciente()
+    {
+        List<TicToquePacienteResponseDTO> pacienteList = pacienteRepository.findAll().stream().map(TicToquePacienteResponseDTO::new).toList();
         return pacienteList;
     }
-    @GetMapping("/r")
-    public List<TicToqueRemedio> getAllRemedio()
+
+    @PostMapping("/rD")
+    public void saveRemedio(@RequestBody TicToqueRemedioRequestDTO data)
     {
-        List<TicToqueRemedio> remedioList = remedioRepository.findAll();
+        TicToqueRemedio remedioData = new TicToqueRemedio(data);
+        remedioRepository.save(remedioData);
+        return;
+    }
+
+    @GetMapping("/r")
+    public List<TicToqueRemedioResponseDTO> getAllRemedio()
+    {
+        List<TicToqueRemedioResponseDTO> remedioList = remedioRepository.findAll().stream().map(TicToqueRemedioResponseDTO::new).toList();
         return remedioList;
     }
 }

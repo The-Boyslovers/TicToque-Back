@@ -18,4 +18,12 @@ public class TicToqueMedico
     @Setter private String email;
     @Setter private String senha;
     @Setter private String crm;
+
+    public TicToqueMedico(TicToqueMedicoRequestDTO data)
+    {
+        this.nome = data.nome();
+        this.email = data.email();
+        this.senha = data.senha();
+        this.crm = data.crm();
+    }
 }
