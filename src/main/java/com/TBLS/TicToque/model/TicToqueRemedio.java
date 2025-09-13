@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "remedio")
 @Entity(name = "remedio")
@@ -23,6 +25,9 @@ public class TicToqueRemedio
     @Setter private String tipo;
     @Setter private LocalDate dataInicio;
     @Setter private LocalDate dataFim;
+
+    @OneToMany(mappedBy = "remedio", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TicToqueRemedioHorario> horarios = new ArrayList<>();
 
      public TicToqueRemedio(TicToqueRemedioRequestDTO data)
     {

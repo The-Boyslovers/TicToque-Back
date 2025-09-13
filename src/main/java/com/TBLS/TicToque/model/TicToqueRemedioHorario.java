@@ -14,17 +14,19 @@ public class TicToqueRemedioHorario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idHorario;
 
-    @Setter private Long idRemedio;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idRemedio")
+    @Setter private TicToqueRemedio remedio;
+
     @Setter private String tipo;
     @Setter private String hora;
-    @Setter private int intervaloHoras;
+    @Setter private Integer intervaloHoras;
 
     public TicToqueRemedioHorario(TicToqueRemedioHorarioRequestDTO data)
     {
-        this.idRemedio = data.idRemedio();
         this.tipo = data.tipo();
         this.hora = data.hora();
-        this.intervaloHoras = data.intervaloHoras();
+        this.intervaloHoras = (data.intervaloHoras() != null) ? data.intervaloHoras() : 0;
     }
 
 }

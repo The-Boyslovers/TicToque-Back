@@ -71,9 +71,11 @@ public class TicToqueController
     @PostMapping("/rhD")
     public void saveRemedioHorario(@RequestBody TicToqueRemedioHorarioRequestDTO data)
     {
+        TicToqueRemedio remedio = remedioRepository.findById(data.idRemedio())
+                .orElseThrow(() -> new IllegalArgumentException("Remedio not found"));
         TicToqueRemedioHorario remedioHorarioData = new TicToqueRemedioHorario(data);
+        remedioHorarioData.setRemedio(remedio);
         remedioHorarioRepository.save(remedioHorarioData);
-        return;
     }
 
     @GetMapping("/rh")
